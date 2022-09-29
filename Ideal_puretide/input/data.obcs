@@ -1,0 +1,58 @@
+# Open-boundaries
+ &OBCS_PARM01
+# This flag turns off checking and fixing problematic topography across 
+# open boundaries. We set it here to override the default because
+# we want to reproduce old results (including their bugs).
+# OBCSfixTopo=.FALSE.,
+ OBCSfixTopo=.TRUE.,
+# OB_Jnorth=1,
+# OB_Jsouth=0,
+ OB_Ieast=1*-1,
+ OB_Iwest=1*1,
+#useOrlanskiNorth=.FALSE.,
+#useOrlanskiSouth=.FALSE.,
+useOrlanskiEast=.TRUE.,
+useOrlanskiWest=.TRUE.,
+
+useOBCSsponge=.TRUE.,
+#OBCSsponge_E=.TRUE.,
+
+useOBCSprescribe = .TRUE.,
+useOBCSbalance = .TRUE.,
+#OBCS_balanceFacN=2.,
+#OBCS_balanceFacS=0.,
+#OBCS_balanceFacE=1.,
+#OBCS_balanceFacW=0.,
+# OBNuFile = 'Uvel.bin',
+# OBSuFile = 'Uvel.bin',
+# the zonal velocity of the WB is the along-stream velocity
+  OBWuFile = 'Uvel_in.bin',
+  OBEuFile = 'Uvel_out.bin',
+# OBNvFile = 'vW.bin',
+# OBSvFile = 'vW.bin',
+# OBWvFile = 'vW.bin',
+# OBEvFile = 'vW.bin',
+
+#  OBNtFile = 'Tini_G.bin',
+# OBStFile = 'OB_T.bin',
+  OBWtFile = 'OB_T.bin',
+# OBEtFile = 'OB_T.bin',
+  OBWsFile = 'OB_S.bin',
+#  OBNsFile = 'Sini_G.bin',
+# OBSptrFile(1) = 'OBmeridS.bin',
+ &
+
+# Orlanski parameters
+ &OBCS_PARM02
+Cmax=0.45,
+cVelTimeScale=250.,
+ &
+
+# Sponge layer parameters
+ &OBCS_PARM03
+ Urelaxobcsinner=1000.,
+ Urelaxobcsbound=100.,
+ Vrelaxobcsinner=0,
+ Vrelaxobcsbound=0,
+ spongeThickness=20,
+/

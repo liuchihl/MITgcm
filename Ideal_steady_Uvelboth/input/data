@@ -1,0 +1,100 @@
+# ====================
+# | Model parameters |
+# ====================
+#
+# Continuous equation parameters
+ &PARM01
+ tRef = 100*20.,
+ sRef = 100*35.,
+ staggerTimeStep=.TRUE.,
+ momStepping=.TRUE.,
+ hFacMin=0.1,
+ viscAz = 1.E-5,
+ viscAh = .1,
+# viscC2Smag = 1.,
+ no_slip_sides=.FALSE.,
+ no_slip_bottom=.TRUE.,
+ bottomDragQuadratic=0.002,
+ tempAdvScheme= 4,
+ saltAdvScheme= 4,
+ implicitDiffusion = .TRUE.
+ implicitViscosity=.TRUE.
+
+# ivdc_kappa = 1,
+# diffK4T = 1e-5,
+# diffK4S = 1e-5,
+# diffKr4T = 1e-4,
+# diffKr4S = 1e-4,
+
+ readBinaryPrec=64,
+ writeBinaryPrec=64,
+ f0 = 0,
+ beta = 0,
+ tAlpha = 2.E-4,
+ sBeta = 0,
+ gravity = 9.81,
+ gBaro = 9.81,
+ rigidLid=.FALSE.,
+ implicitFreeSurface=.TRUE.,
+ nonHydrostatic=.TRUE.,
+ exactConserv = .TRUE.,
+ &
+
+
+# Elliptic solver parameters
+ &PARM02
+ cg2dMaxIters=1000,
+ cg2dTargetResidual=1.E-13,
+ cg3dMaxIters=300,
+ cg3dTargetResidual=1.E-13,
+ &
+
+# Time stepping parameters
+ &PARM03
+# niter0=0.,
+# nTimeSteps=357600.,
+ startTime=0.,
+ endTime=172800.,
+# endTime=259200.,
+# endTime=302400.,
+# startTime = 228120.,
+# endTime=235320.,
+# 237600,
+ deltaT=0.6,
+ abEps=0.1,
+ pChkptFreq=0.,
+ chkptFreq= 0.,
+# pickupSuff='ckptA',
+# dumpFreq = 120.,
+ dumpFreq = 240.,
+# monitorSelect=1,
+ monitorFreq=1.,
+# for time dependent open boundary conditions comment 
+# in the following three lines
+ periodicExternalForcing=.TRUE.,
+
+#the time interval of the forcing set in gendata.m
+ externForcingPeriod=60.,    
+#the duration of the forcing, can be the same as the endtime
+ externForcingCycle=259200., 
+ &
+
+# Gridding parameters
+ &PARM04
+ usingCartesianGrid=.TRUE.,
+ delRfile='delZ',
+ delXfile='delX',
+ dYspacing=20,
+
+ &
+
+# Input datasets
+ &PARM05
+ bathyFile='bathy_slope.bin',
+ uVelInitFile='Uini.bin',
+ hydrogThetaFile='Tini_G.bin',
+ hydrogSaltFile ='Sini_G.bin',
+ checkIniTemp=.false.,
+ checkIniSalt=.false.,
+
+ &

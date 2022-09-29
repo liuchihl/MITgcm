@@ -1,0 +1,18 @@
+#!/bin/bash
+#This script is to submit job to Cheyenne
+
+### Job name
+#PBS -N sub
+
+### Project code
+#PBS -A UOSC0024
+#PBS -l walltime=12:00:00
+#PBS -q economy
+
+### Merge output and error files
+#PBS -j oe
+#PBS -k eod
+
+### nodes and CPU
+#PBS -l select=4:ncpus=30:mpiprocs=30
+sh run.sh 
